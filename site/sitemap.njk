@@ -1,15 +1,14 @@
 ---
 permalink: sitemap.xml
-hide_from_sitemap: true
-eleventyExcludeFromCollections: true
+hidden: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for page in collections.all %}
-{%- if not page.data.hide_from_sitemap %}
+{%- if not page.data.hidden %}
     <url>
         <loc>{{ site.url }}{{ page.url | url }}</loc>
-        <lastmod>{{ page.date | timestamp }}</lastmod>
+        <lastmod>{{ page.date | htmlDateDisplay }}</lastmod>
     </url>
 {%- endif %}
 {%- endfor %}

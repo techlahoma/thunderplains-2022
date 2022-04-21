@@ -1,19 +1,16 @@
 {
-    "name": "Skeleventy",
-    "url": "https://skeleventy.netlify.app",
+    "name": "ThunderPlains 2020",
+    "url": "https://2020.thunderplainsconf.com",
     "author": {
-        "name": "Mill Burray",
-        "handle": "@joe_dyer1"
+        "name": "Techlahoma",
+        "email": "info@techlahoma.org",
+        "handle": "@thunderplains"
     },
     "images": {
-        "favicon": "/favicon.png",
-        "favicon_svg": "/favicon.svg",
-        "apple_touch_icon": "/images/meta/apple-touch-icon.png",
-        "twitter": "/images/meta/twitter.jpg",
-        "og": "/images/meta/og.jpg"
+        "favicon": "/images/favicon.ico"
     },
     "social_links": {
-        "github": "https://github.com/josephdyer/skeleventy",
-        "twitter": "https://twitter.com/joe_dyer1"
+        "twitter": "https://www.twitter.com/thunderplains",
+        "facebook": "https://www.facebook.com/techlahoma"
     }
 }
