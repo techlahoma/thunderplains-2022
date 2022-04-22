@@ -1,3 +1,5 @@
 module.exports = {
-  environment: process.env.ELEVENTY_ENV
+
+    // environment helper
+    'environment': process.env.ELEVENTY_ENV
 };

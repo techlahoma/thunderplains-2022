@@ -1,73 +1,109 @@
 ---
-layout: default
+layout: base
 ---
 
-<main id="main" class="main flex flex-1 flex-col md:flex-row py-10 px-6 lg:px-0 lg:py-20">
+<main id="main" class="main inner box-flex pt-900 pb-600" tabindex="-1">
 
-    <section id="container-centre" class="flex-1 container ml-auto mr-auto lg:px-32">
+    <article id="container-centre" class="column centre">
 
-        <div class="post-header mb-12 md:mb-20">
+        <header class="page-header length-optimal mb-1000 pb-500">
 
-            <h1 class="page-title text-3xl md:text-center md:text-5xl lg:text-6xl">{{ title }}</h1>
+            <h1 class="post-title">{{ title }}</h1>
 
-            <div class="text-sm md:text-base text-grey-dark flex justify-center">
+            {% if sub_heading %}
 
-                <p class="author">By {{ site.author.name }}</p>
+                <p class="sub-heading">{{ sub_heading }}</p>
 
-                <p class="px-2">—</p>
+            {% endif %}
 
-                <time datetime="{{ date }}">
-                    {{ date | dateDisplay }}
-                </time>
+            <div class="post-meta box-flex mt-800 text-400">
 
-                <p class="px-2">—</p>
+                <time class="datetime" datetime="{{ date | timestamp }}">{{ date | dateDisplay }}</time>
 
-                <p class="category">Posted in <a href="/">{{ category }}</a></p>
+                {% if tags %}
+
+                    <div class="box-flex">
+
+                        <ul class="categories">
+
+                            {# this will create a comma for multiple category links #}
+                            {% set comma = joiner() %}
+
+                            {% for item in tags %}
+
+                                {%- if item !== 'blog' -%}
+
+                                    <li class="category"><a href="/categories/{{ item }}">{{ comma() }} {{ item | capitalize }}</a></li>
+
+                                {%- endif -%}
+
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+
+                {% endif %}
 
             </div>
 
-            {# featured post image #}
-            {% if featured_image %}
+        </header>
 
-            <figure class="mt-10 md:mt-20">
+        {# featured post image #}
+        {% if post_image %}
 
-                <img src="{{ featured_image }}" alt="{{ image_caption }}">
+            <figure class="post-image bg-white pt-600 pr-600 pl-600 mb-1000">
 
-                {% if image_caption %}
+                <img data-src="{{ post_image }}" alt="{{ image_alt }}">
 
-                <figcaption class="text-center text-sm italic text-grey-dark mt-4">{{ image_caption }}</figcaption>
-
+                {% if image_alt %}
+                    <figcaption class="post-image-caption bg-white color-primary pt-600 pb-600 text-400">{{ image_alt }}</figcaption>
                 {% endif %}
 
             </figure>
 
-            {% endif %}
+        {% endif %}
 
-        </div>
-
-        <div class="content post md:px-16">
+        <div class="content flow length-optimal">
 
             {{ content | safe }}
 
-        </div>
-
-        {# author card #}
-        <div class="author-card flex flex-col justify-center w-3/4 md:w-2/5 m-auto mt-16 px-12 pb-12 shadow-md rounded-lg text-center">
-
-            <figure class="mb-4">
-
-                <img class="block rounded-full m-auto w-64 p-8 md:p-12" src="{{ site.author.avatar }}" alt="{{ site.author.name }}">
-
-                <figcaption class="font-bold text-pink-dark">{{ site.author.name }}</figcaption>
-
-            </figure>
-
-            <p class="text-sm mb-8">I've spent all my life on top of a mountain, learning the way of the Ninja Dev.</p>
-
-            {% include 'components/social-icons.njk' %}
+            <nav class="pagination mb-1000" aria-label="Pagination">
+                <ul class="items text-400 tablet:box-flex">
+                    {% if previous_post %}<li class="mb-300"><span class="weight-bold">Previous:</span> <a href="{{ previous_post.url }}">{{ previous_post.data.title }}</a></li>{% endif %}
+                    {% if next_post %}<li><span class="weight-bold">Next:</span> <a href="{{ next_post.url }}">{{ next_post.data.title }}</a></li>{% endif %}
+                </ul>
+            </nav>
 
         </div>
 
-    </section>
+    </article>
+
+    {# schema #}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{ title | truncate(110) }}",
+        {% if post_image %}
+        "image": "{{ site.url }}{{ post_image }}",
+        {% endif %}
+        "author": {
+            "@type": "Person",
+            "name": "{{ site.author.name }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ site.name }}",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.url }}/images/meta/article-schema.png"
+            }
+        },
+        "datePublished": "{{ date | timestamp }}",
+        "dateModified": "{{ date | timestamp }}"
+    }
+    </script>
 
 </main>
+
