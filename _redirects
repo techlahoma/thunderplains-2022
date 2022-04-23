@@ -1,9 +1,11 @@
 # These rules will change if you change your site’s custom domains or HTTPS settings
 
 # Redirect domain aliases to primary domain
-https://www.2020.thunderplainsconf.com/* https://2020.thunderplainsconf.com/:splat 301!
-https://thunderplainsconf.com/* https://2020.thunderplainsconf.com/:splat 301!
-https://www.thunderplainsconf.com/* https://2020.thunderplainsconf.com/:splat 301!
+
+https://www.2022.thunderplainsconf.com/_ https://2022.thunderplainsconf.com/:splat 301!
+https://thunderplainsconf.com/_ https://2022.thunderplainsconf.com/:splat 301!
+https://www.thunderplainsconf.com/* https://2022.thunderplainsconf.com/:splat 301!
 
 # Optional: Redirect default Netlify subdomain to primary domain
-https://2020-thunderplains.netlify.app/* https://2020.thunderplainsconf.com/:splat 301!
+
+https://2022-thunderplains.netlify.app/* https://2022.thunderplainsconf.com/:splat 301!
