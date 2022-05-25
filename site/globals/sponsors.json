@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Sponsor",
+    "level": "gold",
+    "tailwind_color": "yellow-dark",
+    "img_width": 325,
+    "per_row": 2,
+    "companies": [
+      {
+        "name": "Heartland Payment Systems is the sole sponsor for ThunderPlains 2021",
+        "a_href": "https://www.heartland.us/about/careers",
+        "img_src": "heartland.png"
+      }
+    ]
+  }
+]

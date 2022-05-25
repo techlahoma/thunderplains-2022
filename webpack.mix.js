@@ -21,7 +21,7 @@ mix
   .js('resources/js/main.js', 'js/')
 
   // Compile SCSS
-  .sass('resources/scss/main.scss', 'css/')
+  .sass('resources/sass/main.scss', 'css/')
   .options({ processCssUrls: false });
 
 // Production only

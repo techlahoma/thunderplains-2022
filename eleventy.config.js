@@ -60,6 +60,7 @@ module.exports = (config) => {
   config.addLayoutAlias('post', 'layouts/post.njk');
   config.addLayoutAlias('contact', 'layouts/contact.njk');
   config.addLayoutAlias('category', 'layouts/category.njk');
+  config.addLayoutAlias('default', 'layouts/default.njk');
 
   // Include our static assets
   config.addPassthroughCopy('css');

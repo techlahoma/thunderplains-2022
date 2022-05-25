@@ -1,15 +1,12 @@
-
-<ul class="social-icons box-flex">
+<ul class="flex list-reset justify-center">
 
     {% for icon, link in site.social_links %}
 
-    <li class="ml-400">
+    <li class="mr-4">
 
-        <a href="{{ link | safe }}" class="icon-link box-block color-primary" target="_blank" rel="noreferrer noopener">
+        <a href="{{ link | safe }}" class="block text-purple-light" aria-label="{{ icon | capitalize }}">
 
-            <span class="sr-only">Find me on {{ icon }}</span>
-
-            <svg class="icon box-block" fill="currentColor" aria-hidden="true">
+            <svg class="block" fill="currentColor" role="img" aria-hidden="true" width="48" height="48">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/icons/icon-library.svg#icon-{{ icon }}"></use>
             </svg>
 
@@ -20,4 +17,3 @@
     {% endfor %}
 
 </ul>
-
